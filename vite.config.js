@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import solidPlugin from 'vite-plugin-solid'
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [solidPlugin()],
   server: {
     port: 5177,
@@ -15,17 +15,22 @@ export default defineConfig({
     ],
     proxy: {
       '/api': {
-        // target: 'http://localhost:8001',
-        target: 'https://backslash-twitter-back-xi.vercel.app',
+        target: command === 'serve' 
+          ? 'http://localhost:8001'
+          : 'https://backslash-twitter-back-xi.vercel.app',
         changeOrigin: true,
         secure: false,
+        rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
   },
   build: {
     target: 'esnext',
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: true
   },
   css: {
     postcss: './postcss.config.cjs'
   }
-})
+}))
