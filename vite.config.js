@@ -8,7 +8,7 @@ export default defineConfig({
     host: true,
     allowedHosts: [
       'backslash-twitter-clone.onrender.com',
-      'https://backslash-twitter-clone-five.vercel.app',
+      'backslash-twitter-clone-five.vercel.app',
       'localhost',
       '127.0.0.1'
     ],
