@@ -1,4 +1,6 @@
+// Local development
 // const API_URL = 'http://localhost:8001/api';
+// Production
 const API_URL = 'https://backslash-twitter-back-xi.vercel.app/api';
 
 export const fetchTweets = async () => {
